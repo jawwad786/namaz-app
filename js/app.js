@@ -27,16 +27,20 @@ function render() {
     return toMins(todayRow[key] || todayRow[key.toLowerCase()] || '');
   });
 
-  // Current = last prayer whose Adhan has passed
+  // Current = last prayer whose Adhan has passed (drives "Now" badge)
   let curIdx = -1;
   adhanMins.forEach((m, i) => {
     if (m !== -1 && nm >= m) curIdx = i;
   });
 
-  // Next prayer (wraps to Fajr after Isha)
-  const nextIdx = curIdx < PRAYERS.length - 1 ? curIdx + 1 : 0;
+  // Next = first prayer whose Iqamah hasn't passed yet (drives countdown)
+  let nextIdx = iqamahMins.findIndex((iq, i) => {
+    const target = iq !== -1 ? iq : adhanMins[i];
+    return target !== -1 && nm < target;
+  });
+  if (nextIdx === -1) nextIdx = 0; // after Isha, wrap to Fajr
 
-  // Countdown target: prefer Iqamah, fall back to Adhan
+  // Countdown target: next prayer's Iqamah, fall back to Adhan
   const targetMins = iqamahMins[nextIdx] !== -1
     ? iqamahMins[nextIdx]
     : adhanMins[nextIdx];
