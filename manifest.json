@@ -1,0 +1,40 @@
+{
+  "name": "193 Bolton Road Masjid",
+  "short_name": "Masjid Times",
+  "description": "Daily prayer times for 193 Bolton Road Masjid, Blackburn, UK.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a2e18",
+  "theme_color": "#0e3d22",
+  "orientation": "portrait",
+  "screenshots": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Bolton Road Masjid Prayer Times"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Bolton Road Masjid Prayer Times"
+    }
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="theme-color" content="#0e3d22">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" id="meta-app-title" content="Bolton Road Masjid">
+  <meta name="description" id="meta-description" content="Daily prayer times">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <title>Bolton Road Masjid — Prayer Times</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Loading screen ─────────────────────────── -->
+  <div class="loading-screen" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-mosque">Bolton Road Masjid</div>
+    <div class="loading-msg" id="load-msg">Fetching today's prayer times…</div>
+  </div>
+
+  <!-- ── App ───────────────────────────────────── -->
+  <div id="app" style="display:none">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-line"></div>
+      <div class="mosque-name">Bolton Road Masjid</div>
+      <div class="mosque-location">Bradford · United Kingdom</div>
+      <div class="header-dates">
+        <div class="date-pill hijri" id="hijri-date">Loading…</div>
+      </div>
+    </div>
+
+    <!-- Next prayer strip -->
+    <div class="next-strip">
+      <div class="next-left">
+        <div class="next-eyebrow">Next Prayer</div>
+        <div class="next-name" id="next-name">—</div>
+      </div>
+      <div class="next-right">
+        <div class="countdown" id="countdown">—</div>
+        <div class="countdown-sub">remaining</div>
+      </div>
+    </div>
+
+    <!-- Prayer table -->
+    <div class="section-hd"><span>Today's Iqamah Times</span></div>
+    <div class="col-headers">
+      <div class="col-hd">Prayer</div>
+      <div class="col-hd">Iqamah</div>
+    </div>
+    <div class="prayer-list" id="prayer-list"><!-- injected by JS --></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-name">Bolton Road Masjid, Bradford</div>
+      <div class="footer-updated" id="last-updated"></div>
+    </div>
+
+  </div><!-- /app -->
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

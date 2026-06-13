@@ -1,0 +1,381 @@
+/* ═══════════════════════════════════════════════════════
+   style.css — Bolton Road Masjid Prayer Times App
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+/* ── Design tokens ──────────────────────────────────── */
+:root {
+  --g-dark:    #0a2e18;
+  --g-mid:     #14532d;
+  --g-main:    #166534;
+  --g-light:   #16a34a;
+  --gold:      #ca8a04;
+  --gold-lt:   #fbbf24;
+  --cream:     #fafaf9;
+  --white:     #ffffff;
+  --border:    #e7e5e4;
+  --text:      #1c1917;
+  --muted:     #78716c;
+  --subtle:    #f5f5f4;
+  --active-bg: #f0fdf4;
+  --active-bd: #16a34a;
+  --passed:    #a8a29e;
+  --radius:    14px;
+  --shadow:    0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* ── Base ───────────────────────────────────────────── */
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100dvh;
+  padding-bottom: 32px;
+}
+
+/* ── HEADER ─────────────────────────────────────────── */
+.header {
+  background: linear-gradient(170deg, var(--g-dark) 0%, var(--g-main) 100%);
+  padding: 28px 20px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Islamic star pattern overlay */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35 5 37 24 52 16 43 30 62 35 43 40 52 54 37 46 35 65 33 46 18 54 27 40 8 35 27 30 18 16 33 24Z' fill='%23fbbf24' fill-opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.header-line {
+  width: 36px;
+  height: 2px;
+  background: var(--gold-lt);
+  margin: 0 auto 14px;
+  opacity: 0.6;
+  border-radius: 2px;
+}
+
+.mosque-name {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.mosque-location {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.header-dates {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.date-pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+}
+
+.date-pill.hijri {
+  background: rgba(202,138,4,0.2);
+  border-color: rgba(251,191,36,0.35);
+  color: var(--gold-lt);
+}
+
+/* ── NEXT PRAYER STRIP ──────────────────────────────── */
+.next-strip {
+  background: var(--g-mid);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.next-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 3px;
+}
+
+.next-name {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.next-right { text-align: right; }
+
+.countdown {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold-lt);
+  line-height: 1;
+}
+
+.countdown-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 3px;
+}
+
+/* ── SECTION HEADING ────────────────────────────────── */
+.section-hd {
+  padding: 20px 20px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-hd span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-hd::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── COLUMN HEADERS ─────────────────────────────────── */
+.col-headers {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  padding: 0 20px 6px;
+}
+
+.col-hd {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+.col-hd:first-child {
+  text-align: left;
+  padding-left: 48px;
+}
+
+/* ── PRAYER ROWS ────────────────────────────────────── */
+.prayer-list {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.p-row {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  align-items: center;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.25s, background 0.25s, opacity 0.25s;
+}
+
+.p-row.active {
+  background: var(--active-bg);
+  border-color: var(--active-bd);
+  box-shadow: 0 0 0 3px rgba(22,163,74,0.1);
+}
+
+.p-row.passed { opacity: 0.42; }
+
+.p-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.p-icon {
+  font-size: 20px;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.p-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.p-row.active .p-name { color: var(--g-main); }
+
+.now-badge {
+  display: inline-block;
+  margin-left: 8px;
+  background: var(--g-main);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.p-time { text-align: center; }
+
+.p-time-val {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.iqamah-time .p-time-val { color: var(--gold); font-weight: 600; }
+.p-row.passed .p-time-val { color: var(--passed); }
+
+/* ── INFO / ERROR CARDS ─────────────────────────────── */
+.info-card {
+  margin: 16px 16px 0;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.info-card.error { border-color: #fca5a5; background: #fff5f5; }
+
+.info-title {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.info-card.error .info-title { color: #b91c1c; }
+
+.info-body {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.info-body code {
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 12px;
+  color: var(--text);
+  font-family: monospace;
+}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+.footer {
+  padding: 24px 20px 0;
+  text-align: center;
+}
+
+.footer-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.footer-updated {
+  font-size: 11px;
+  color: #d6d3d1;
+  margin-top: 4px;
+}
+
+/* ── LOADING SCREEN ─────────────────────────────────── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--g-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 99;
+  transition: opacity 0.35s ease;
+}
+
+.loading-screen.out { opacity: 0; pointer-events: none; }
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(251,191,36,0.15);
+  border-top-color: var(--gold-lt);
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-mosque {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+}
+
+.loading-msg {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 380px) {
+  .p-row         { grid-template-columns: 1fr 100px; padding: 12px; }
+  .col-headers   { grid-template-columns: 1fr 100px; }
+  .p-time-val    { font-size: 13px; }
+  .p-name        { font-size: 14px; }
+  .p-icon        { font-size: 17px; width: 26px; }
+  .mosque-name   { font-size: 20px; }
+  .countdown     { font-size: 20px; }
+}
