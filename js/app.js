@@ -19,7 +19,7 @@ function render() {
   const nm = nowMins();
 
   // Adhan times decide which prayer period we're in
-  const adhanMins = PRAYERS.map(p => toMins(todayRow[p.name]));
+  const adhanMins = PRAYERS.map(p => toMins(todayRow[`${p.name}_start`] || todayRow[p.name] || ''));
 
   // Iqamah times are shown in the list and used for countdown
   const iqamahMins = PRAYERS.map(p => {
@@ -32,6 +32,12 @@ function render() {
   adhanMins.forEach((m, i) => {
     if (m !== -1 && nm >= m) curIdx = i;
   });
+
+  // Fajr "Now" ends at sunrise
+  if (curIdx === 0) {
+    const sunriseMins = toMins(todayRow['SUNRISE'] || todayRow['Sunrise'] || todayRow['sunrise'] || '');
+    if (sunriseMins !== -1 && nm >= sunriseMins) curIdx = -1;
+  }
 
   // Next = first prayer whose Iqamah hasn't passed yet (drives countdown)
   let nextIdx = iqamahMins.findIndex((iq, i) => {
