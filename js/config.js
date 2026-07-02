@@ -10,7 +10,7 @@ const CONFIG = {
   SHEET_ID: '1yHtpHLNGrGxiPfflrp0fagR9YWFvz3F8a2Q1VpA-NcY',
 
   // The tab name at the bottom of your Google Sheet
-  SHEET_TAB: 'PrayerTimes',
+  SHEET_TAB: 'MusallahYusuf_PrayerTimes',
 
   // ── Apps Script ───────────────────────────────────────
   // Paste your Google Apps Script Web App URL here
